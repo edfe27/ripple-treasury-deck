@@ -1051,6 +1051,71 @@
     }
 
     /* =========================================
+       MOBILE — horizontal swipe between slides
+       (portrait phones use Story-style nav)
+       ========================================= */
+    @media (max-width: 900px) {
+      html {
+        scroll-snap-type: x mandatory;
+        overflow-x: auto;
+        overflow-y: hidden;
+        height: 100vh;
+        height: 100dvh;
+        overscroll-behavior: contain;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+      html::-webkit-scrollbar { display: none; }
+
+      body {
+        display: flex;
+        flex-direction: row;
+        width: max-content;
+        min-width: 100vw;
+        height: 100vh;
+        height: 100dvh;
+      }
+
+      section {
+        flex: 0 0 100vw;
+        width: 100vw;
+        height: 100vh;
+        height: 100dvh;
+        min-height: 100vh;
+        min-height: 100dvh;
+        overflow-y: auto;
+        overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
+        scroll-snap-align: start;
+        scroll-snap-stop: always;
+      }
+
+      .frame { padding: 28px 20px 32px; }
+      .slide-cover { padding: 36px 22px 40px; }
+
+      .display-cover { font-size: clamp(34px, 9vw, 54px); line-height: 1.06; }
+      .title-xl { font-size: clamp(22px, 6.4vw, 32px); }
+
+      .problem-grid,
+      .pillar-grid,
+      .arch-stage,
+      .modules-grid,
+      .voices-grid,
+      .voices-summary,
+      .ai-layout,
+      .ai-caps,
+      .discovery-grid {
+        grid-template-columns: 1fr !important;
+        gap: 18px !important;
+      }
+      .problem-stats { grid-template-columns: 1fr 1fr !important; }
+      .cover-meta { flex-wrap: wrap; gap: 22px !important; }
+
+      .deck-indicator { bottom: 14px; right: 14px; font-size: 11px; }
+      .deck-hint { display: none; }
+    }
+
+    /* =========================================
        PRINT — clean export, no animations,
        page-break per section, hide overlays
        ========================================= */
