@@ -1,0 +1,2103 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ripple Treasury · La Claridad para Actuar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #0A1628;
+      --paper: #FFFFFF;
+      --cream: #F7F6F2;
+      --accent: #0085FF;
+      --accent-soft: rgba(0, 133, 255, 0.10);
+      --accent-deep: #0050B8;
+      --gradient: linear-gradient(135deg, #0A1628 0%, #14304D 100%);
+      --red: #E53935;
+      --gray-100: #F0EEE8;
+      --gray-300: #D4D2CC;
+      --gray-500: #8A8A84;
+      --gray-700: #4A4A46;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-snap-type: y mandatory;
+      overflow-y: scroll;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    section {
+      min-height: 100vh;
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* ===== Typography ===== */
+    .display-cover {
+      font-size: clamp(48px, 5.5vw, 82px);
+      font-weight: 700;
+      line-height: 1.04;
+      letter-spacing: -0.03em;
+      color: var(--paper);
+    }
+
+    .title-xl {
+      font-size: clamp(28px, 3.2vw, 46px);
+      font-weight: 700;
+      line-height: 1.12;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+    }
+
+    .accent-text { color: var(--accent); }
+    .accent-text-italic { color: var(--accent); font-style: italic; }
+
+    .eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gray-500);
+      margin-bottom: 12px;
+    }
+    .eyebrow.accent { color: var(--accent); }
+
+    .body-lg { font-size: 17px; line-height: 1.6; color: var(--gray-700); }
+    .mono { font-family: 'DM Mono', monospace; }
+
+    .page-tag {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--gray-500);
+      font-family: 'DM Mono', monospace;
+      letter-spacing: 0.06em;
+    }
+
+    /* ===== Frame pattern ===== */
+    .frame {
+      width: 100%;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      padding: 32px 56px 40px;
+      background: var(--paper);
+    }
+
+    .frame-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 32px;
+      border-bottom: 1px solid var(--gray-300);
+      padding-bottom: 16px;
+    }
+
+    .lockup { display: flex; align-items: center; gap: 10px; }
+
+    .brand-logo {
+      width: 26px;
+      height: 26px;
+      display: block;
+      flex-shrink: 0;
+    }
+
+    .brand-text {
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--ink);
+      letter-spacing: -0.02em;
+      text-transform: lowercase;
+    }
+
+    .brand-sub {
+      font-size: 11px;
+      color: var(--gray-500);
+      font-family: 'DM Mono', monospace;
+      padding-left: 10px;
+      border-left: 1px solid var(--gray-300);
+      letter-spacing: 0.06em;
+    }
+
+    .hero { margin-bottom: 32px; max-width: 880px; }
+
+    /* ===== SLIDE 1 — COVER ===== */
+    .slide-cover {
+      background: var(--gradient);
+      position: relative;
+      padding: 40px 64px 56px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 100vh;
+    }
+
+    .cover-deco {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      width: 100%;
+      height: 100%;
+    }
+
+    .cover-fade {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(10, 22, 40, 0.7) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .cover-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cover-brand { display: flex; align-items: center; }
+
+    .cover-brand-lockup {
+      height: 56px;
+      width: auto;
+      display: block;
+    }
+
+    .cover-date {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.45);
+      font-family: 'DM Mono', monospace;
+      letter-spacing: 0.06em;
+    }
+
+    .cover-body {
+      position: relative;
+      z-index: 1;
+      max-width: 880px;
+    }
+
+    .cover-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.45);
+      margin-bottom: 24px;
+    }
+
+    .cover-eyebrow .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 12px rgba(0, 133, 255, 0.6);
+    }
+
+    .cover-sub {
+      color: rgba(255, 255, 255, 0.65);
+      max-width: 660px;
+      margin: 28px 0 44px;
+      font-size: 17px;
+      line-height: 1.6;
+    }
+
+    .cover-meta { display: flex; gap: 48px; }
+    .cover-meta-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.35);
+      margin-bottom: 4px;
+    }
+    .cover-meta-val {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.85);
+      font-weight: 500;
+    }
+
+    .cover-footer-stat {
+      position: relative;
+      z-index: 1;
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.45);
+      letter-spacing: 0.08em;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* ===== SLIDE 2 — PROBLEM ===== */
+    .problem-intro {
+      max-width: 820px;
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--gray-700);
+    }
+
+    .problem-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .problem-card {
+      background: var(--cream);
+      border: 1px solid var(--gray-300);
+      border-radius: 14px;
+      padding: 22px;
+    }
+
+    .problem-num {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--accent);
+      letter-spacing: 0.08em;
+      margin-bottom: 10px;
+    }
+
+    .problem-title {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: var(--ink);
+    }
+
+    .problem-desc {
+      font-size: 13px;
+      color: var(--gray-700);
+      line-height: 1.55;
+    }
+
+    .problem-stats {
+      margin-top: 32px;
+      background: var(--ink);
+      border-radius: 14px;
+      padding: 20px 28px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .pstat-val {
+      font-family: 'DM Mono', monospace;
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+
+    .pstat-label {
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.6);
+      margin-top: 8px;
+      line-height: 1.4;
+    }
+
+    /* ===== SLIDE 3 — PLATFORM ===== */
+    .platform-intro {
+      max-width: 880px;
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--gray-700);
+    }
+
+    .pillar-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .pillar-card {
+      background: var(--cream);
+      border: 1px solid var(--gray-300);
+      border-radius: 14px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .pillar-icon {
+      width: 36px;
+      height: 36px;
+      background: var(--accent-soft);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+    }
+
+    .pillar-title { font-size: 16px; font-weight: 700; color: var(--ink); }
+    .pillar-desc { font-size: 13px; color: var(--gray-700); line-height: 1.55; }
+
+    .platform-badge-wrap { display: flex; justify-content: center; margin-top: 24px; }
+    .platform-badge {
+      padding: 10px 22px;
+      background: var(--ink);
+      color: var(--paper);
+      border-radius: 24px;
+      font-size: 12px;
+      font-family: 'DM Mono', monospace;
+      letter-spacing: 0.06em;
+    }
+
+    /* ===== SLIDE 4 — ARCHITECTURE ===== */
+    .arch-stage {
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 32px;
+      flex: 1;
+      align-items: center;
+    }
+
+    .arch-svg {
+      width: 100%;
+      height: auto;
+      max-height: 540px;
+    }
+
+    .arch-side {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .arch-side-item {
+      background: var(--cream);
+      border: 1px solid var(--gray-300);
+      border-radius: 10px;
+      padding: 12px 14px;
+    }
+
+    .arch-side-label {
+      font-size: 10px;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-family: 'DM Mono', monospace;
+      margin-bottom: 4px;
+    }
+
+    .arch-side-text {
+      font-size: 12px;
+      color: var(--gray-700);
+      line-height: 1.4;
+    }
+
+    .arch-hint {
+      margin-top: 4px;
+      font-size: 11px;
+      color: var(--accent-deep);
+      font-family: 'DM Mono', monospace;
+      letter-spacing: 0.06em;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .arch-hint::before {
+      content: '◉';
+      color: var(--accent);
+      animation: pulse 1.6s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.35; }
+    }
+
+    /* Architecture animations — flow connectors */
+    .arch-flow {
+      stroke-dasharray: 6 5;
+      animation: dashFlow 2.4s linear infinite;
+    }
+
+    .arch-flow-slow {
+      stroke-dasharray: 5 4;
+      animation: dashFlow 3.2s linear infinite;
+    }
+
+    @keyframes dashFlow {
+      to { stroke-dashoffset: -55; }
+    }
+
+    /* Architecture interactivity — clickable modules */
+    .arch-module {
+      cursor: pointer;
+      transition: filter 0.2s ease;
+    }
+
+    .arch-module:hover rect {
+      stroke: var(--accent);
+      stroke-width: 2;
+    }
+
+    .arch-module:hover {
+      filter: drop-shadow(0 4px 12px rgba(0, 133, 255, 0.25));
+    }
+
+    /* Module tooltip modal */
+    .module-tooltip {
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 22, 40, 0.55);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 200;
+      animation: fadeIn 0.2s ease;
+    }
+
+    .module-tooltip[hidden] { display: none; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .module-tooltip-content {
+      background: var(--paper);
+      border: 1.5px solid var(--accent);
+      border-radius: 16px;
+      padding: 32px;
+      max-width: 520px;
+      width: calc(100% - 80px);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+      position: relative;
+      animation: slideUp 0.25s ease;
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(16px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .module-tooltip-close {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1px solid var(--gray-300);
+      background: var(--cream);
+      color: var(--gray-700);
+      font-size: 16px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.15s ease;
+    }
+
+    .module-tooltip-close:hover {
+      background: var(--ink);
+      color: var(--paper);
+      border-color: var(--ink);
+    }
+
+    .module-tooltip-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .module-tooltip-title {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 14px;
+      letter-spacing: -0.01em;
+    }
+
+    .module-tooltip-lead {
+      font-size: 13px;
+      color: var(--gray-700);
+      line-height: 1.55;
+      font-style: italic;
+      margin-bottom: 18px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--gray-300);
+    }
+
+    .module-tooltip-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .module-tooltip-list li {
+      font-size: 13px;
+      color: var(--gray-700);
+      padding-left: 18px;
+      position: relative;
+      line-height: 1.55;
+    }
+
+    .module-tooltip-list li::before {
+      content: '◆';
+      position: absolute;
+      left: 0;
+      top: 1px;
+      color: var(--accent);
+      font-size: 10px;
+    }
+
+    /* ===== SLIDES 5 / 6 — MODULES ===== */
+    .modules-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      flex: 1;
+    }
+
+    .module-card {
+      background: var(--cream);
+      border: 1px solid var(--gray-300);
+      border-radius: 14px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .module-card.new {
+      border: 1.5px solid var(--accent);
+      background: linear-gradient(180deg, rgba(0, 133, 255, 0.04), var(--cream));
+    }
+
+    .module-badge-new {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      background: var(--accent);
+      color: var(--paper);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      padding: 3px 8px;
+      border-radius: 10px;
+      font-family: 'DM Mono', monospace;
+    }
+
+    .module-head {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--gray-300);
+    }
+
+    .module-icon {
+      width: 36px;
+      height: 36px;
+      background: var(--accent-soft);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .module-title { font-size: 15px; font-weight: 700; color: var(--ink); }
+
+    .module-lead {
+      font-size: 12px;
+      color: var(--gray-700);
+      line-height: 1.55;
+      margin-bottom: 14px;
+      font-style: italic;
+    }
+
+    .module-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: auto;
+    }
+
+    .module-list li {
+      font-size: 11px;
+      color: var(--gray-700);
+      padding-left: 14px;
+      position: relative;
+      line-height: 1.5;
+    }
+
+    .module-list li::before {
+      content: '·';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 1;
+    }
+
+    .module-foot {
+      margin-top: 16px;
+      padding-top: 12px;
+      border-top: 1px solid var(--gray-300);
+      font-size: 10px;
+      color: var(--accent);
+      font-family: 'DM Mono', monospace;
+      letter-spacing: 0.06em;
+    }
+
+    .coming-band {
+      margin-top: 20px;
+      background: var(--gradient);
+      border-radius: 12px;
+      padding: 14px 20px;
+      color: var(--paper);
+      font-size: 12px;
+      font-family: 'DM Mono', monospace;
+      letter-spacing: 0.04em;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .coming-band-label {
+      font-size: 10px;
+      color: var(--accent);
+      letter-spacing: 0.12em;
+      padding: 3px 10px;
+      background: rgba(0, 133, 255, 0.15);
+      border-radius: 10px;
+      flex-shrink: 0;
+    }
+
+    /* ===== SLIDE 6.5 — VOICES ===== */
+    .voices-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      flex: 1;
+    }
+
+    .voice-card {
+      background: var(--cream);
+      border: 1px solid var(--gray-300);
+      border-radius: 14px;
+      padding: 26px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .voice-role-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      color: var(--accent-deep);
+      background: var(--accent-soft);
+      padding: 4px 10px;
+      border-radius: 12px;
+      align-self: flex-start;
+      margin-bottom: 18px;
+      text-transform: uppercase;
+    }
+
+    .voice-quote-mark {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 56px;
+      color: var(--accent);
+      line-height: 0.4;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .voice-quote {
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1.55;
+      color: var(--ink);
+      margin-bottom: auto;
+      padding-bottom: 20px;
+    }
+
+    .voice-attrib {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding-top: 16px;
+      border-top: 1px solid var(--gray-300);
+    }
+
+    .voice-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--ink);
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 12px;
+      font-family: 'DM Mono', monospace;
+      flex-shrink: 0;
+      letter-spacing: 0.04em;
+    }
+
+    .voice-name { font-size: 12px; font-weight: 700; color: var(--ink); }
+    .voice-role { font-size: 11px; color: var(--gray-500); margin-top: 2px; line-height: 1.35; }
+
+    .voices-summary {
+      margin-top: 22px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      padding: 18px 24px;
+      background: var(--ink);
+      border-radius: 14px;
+    }
+
+    .voices-summary-stat { text-align: center; }
+    .voices-summary-val {
+      font-family: 'DM Mono', monospace;
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+      letter-spacing: -0.01em;
+    }
+
+    .voices-summary-label {
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.7);
+      margin-top: 6px;
+      line-height: 1.4;
+    }
+
+    /* ===== SLIDE 7 — GSMART AI ===== */
+    .ai-layout {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 40px;
+      flex: 1;
+    }
+
+    .ai-left {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .ai-desc {
+      font-size: 14px;
+      color: var(--gray-700);
+      line-height: 1.65;
+    }
+
+    .ai-badge {
+      background: linear-gradient(135deg, #FF3D7F, #FFA94D);
+      border-radius: 16px;
+      padding: 32px 24px;
+      text-align: center;
+      box-shadow: 0 14px 40px rgba(255, 61, 127, 0.18);
+    }
+
+    .ai-badge-title {
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--paper);
+      letter-spacing: -0.02em;
+    }
+
+    .ai-badge-sub {
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.85);
+      margin-top: 6px;
+      font-style: italic;
+    }
+
+    .ai-advantage {
+      background: var(--cream);
+      border: 1px solid var(--gray-300);
+      border-radius: 12px;
+      padding: 18px;
+    }
+
+    .ai-advantage-head {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent-deep);
+      margin-bottom: 10px;
+    }
+
+    .ai-advantage-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .ai-advantage-list li {
+      font-size: 12px;
+      color: var(--gray-700);
+      padding-left: 14px;
+      position: relative;
+      line-height: 1.5;
+    }
+
+    .ai-advantage-list li::before {
+      content: '·';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .ai-caps {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      align-content: start;
+    }
+
+    .ai-cap-card {
+      background: var(--cream);
+      border: 1px solid var(--gray-300);
+      border-radius: 12px;
+      padding: 18px;
+    }
+
+    .ai-cap-title { font-size: 13px; font-weight: 700; color: var(--ink); margin-bottom: 6px; }
+    .ai-cap-desc { font-size: 12px; color: var(--gray-700); line-height: 1.55; }
+
+    /* ===== SLIDE 8 — DISCOVERY ===== */
+    .discovery-grid {
+      display: grid;
+      grid-template-columns: 3fr 2fr;
+      gap: 40px;
+      flex: 1;
+    }
+
+    .questions-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--gray-300);
+      margin-bottom: 16px;
+    }
+
+    .questions-title {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .questions-count {
+      font-size: 12px;
+      color: var(--gray-500);
+      font-family: 'DM Mono', monospace;
+    }
+
+    .question-item {
+      display: flex;
+      gap: 14px;
+      padding: 11px 0;
+      border-bottom: 1px solid var(--gray-100);
+    }
+
+    .question-num {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--accent);
+      min-width: 20px;
+      margin-top: 2px;
+    }
+
+    .question-text { font-size: 13px; line-height: 1.5; }
+    .question-text .meta {
+      display: block;
+      font-size: 11px;
+      color: var(--gray-500);
+      font-family: 'DM Mono', monospace;
+      margin-top: 3px;
+    }
+
+    .roadmap-head {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--gray-300);
+      margin-bottom: 16px;
+    }
+
+    .roadmap-week {
+      display: flex;
+      gap: 16px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--gray-100);
+    }
+
+    .roadmap-week.focal {
+      background: var(--accent-soft);
+      border-radius: 10px;
+      padding: 14px;
+      margin: 4px -8px;
+      border-bottom: none;
+    }
+
+    .week-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--accent);
+      min-width: 90px;
+      margin-top: 2px;
+      font-weight: 500;
+    }
+
+    .week-title { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
+    .week-desc { font-size: 12px; color: var(--gray-700); line-height: 1.5; }
+
+    .closing-note {
+      margin-top: 20px;
+      background: var(--cream);
+      border: 1px solid var(--gray-300);
+      border-radius: 10px;
+      padding: 14px 16px;
+      font-size: 12px;
+      color: var(--gray-700);
+      line-height: 1.6;
+      font-style: italic;
+    }
+
+    .contact-line {
+      margin-top: 10px;
+      font-size: 12px;
+      font-family: 'DM Mono', monospace;
+      color: var(--ink);
+      letter-spacing: 0.04em;
+    }
+
+    /* ===== Overlays ===== */
+    .deck-indicator {
+      position: fixed;
+      bottom: 28px;
+      right: 40px;
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      color: var(--gray-500);
+      z-index: 100;
+      letter-spacing: 0.06em;
+    }
+
+    .deck-hint {
+      position: fixed;
+      bottom: 28px;
+      left: 40px;
+      font-size: 11px;
+      color: var(--gray-500);
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    kbd {
+      background: var(--gray-100);
+      border: 1px solid var(--gray-300);
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-size: 10px;
+      font-family: 'DM Mono', monospace;
+    }
+
+    @media (max-width: 1280px) {
+      .frame { padding: 24px 40px 32px; }
+      .slide-cover { padding: 32px 48px 48px; }
+      .ai-layout { grid-template-columns: 280px 1fr; gap: 28px; }
+    }
+
+    /* =========================================
+       PRINT — clean export, no animations,
+       page-break per section, hide overlays
+       ========================================= */
+    @media print {
+      @page {
+        size: A4 landscape;
+        margin: 0;
+      }
+
+      html {
+        scroll-snap-type: none !important;
+        overflow: visible !important;
+        height: auto !important;
+      }
+
+      body {
+        background: #FFFFFF !important;
+        color: #000000;
+        height: auto !important;
+        overflow: visible !important;
+      }
+
+      section {
+        page-break-after: always;
+        break-after: page;
+        page-break-inside: avoid;
+        break-inside: avoid;
+        min-height: 100vh;
+        height: 100vh;
+        scroll-snap-align: none !important;
+        scroll-snap-stop: normal !important;
+        overflow: hidden !important;
+      }
+
+      section:last-of-type {
+        page-break-after: auto;
+        break-after: auto;
+      }
+
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+
+      .stagger-item {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+
+      .arch-flow, .arch-flow-slow {
+        stroke-dasharray: none !important;
+      }
+
+      .deck-indicator,
+      .deck-hint,
+      .module-tooltip {
+        display: none !important;
+      }
+
+      .frame {
+        background: #FFFFFF !important;
+        min-height: 100vh;
+        padding: 24px 40px 28px;
+      }
+
+      .slide-cover,
+      .problem-stats,
+      .platform-badge,
+      .voices-summary,
+      .coming-band,
+      .ai-badge {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        color-adjust: exact !important;
+      }
+
+      .arch-svg {
+        max-height: 480px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========== SLIDE 1 — COVER ========== -->
+  <section class="slide-cover">
+    <svg class="cover-deco" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <defs>
+        <radialGradient id="coverGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="rgba(0,133,255,0.18)"/>
+          <stop offset="100%" stop-color="rgba(0,133,255,0)"/>
+        </radialGradient>
+      </defs>
+      <circle cx="1520" cy="180" r="600" fill="url(#coverGlow)"/>
+      <circle cx="1520" cy="180" r="380" fill="rgba(0,133,255,0.07)" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+      <circle cx="1520" cy="180" r="260" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+      <circle cx="1520" cy="180" r="140" fill="rgba(0,133,255,0.14)" stroke="rgba(255,255,255,0.10)" stroke-width="1"/>
+      <circle cx="1520" cy="180" r="60" fill="none" stroke="rgba(0,133,255,0.30)" stroke-width="1"/>
+      <line x1="0" y1="780" x2="1920" y2="780" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+      <line x1="0" y1="870" x2="1920" y2="870" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+    </svg>
+    <div class="cover-fade"></div>
+
+    <div class="cover-top">
+      <div class="cover-brand">
+        <img class="cover-brand-lockup" src="assets/ripple-treasury-lockup.svg" alt="Ripple Treasury — Powered by GTreasury">
+      </div>
+      <div class="cover-date">Q2 2026 · Brief de Plataforma Enterprise</div>
+    </div>
+
+    <div class="cover-body">
+      <div class="cover-eyebrow">
+        <span class="dot"></span>
+        <span>La plataforma de tesorería más adaptable del mundo</span>
+      </div>
+      <h1 class="display-cover">La claridad para actuar<br><span class="accent-text-italic">en cada activo.</span></h1>
+      <p class="cover-sub">El primer Treasury Management System con capacidades nativas de activos digitales. 40 años de experiencia en tesorería empresarial, ahora extendidos a stablecoins, fondos tokenizados y liquidación blockchain en tiempo real — sin romper tus flujos de trabajo existentes.</p>
+      <div class="cover-meta">
+        <div class="cover-meta-item">
+          <div class="cover-meta-label">Audiencia</div>
+          <div class="cover-meta-val">CFOs · Tesoreros · Controllers</div>
+        </div>
+        <div class="cover-meta-item">
+          <div class="cover-meta-label">Formato</div>
+          <div class="cover-meta-val">Brief · lectura 5 min</div>
+        </div>
+        <div class="cover-meta-item">
+          <div class="cover-meta-label">Impulsado por</div>
+          <div class="cover-meta-val">Ripple + GTreasury</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cover-footer-stat">$13T procesados · 1,000+ clientes · 160 países · despliegue en 90 días</div>
+  </section>
+
+  <!-- ========== SLIDE 2 — PROBLEM ========== -->
+  <section>
+    <div class="frame">
+      <div class="frame-header">
+        <div class="lockup">
+          <img class="brand-logo" src="assets/ripple-treasury-logo.svg" alt="Ripple Treasury">
+          <span class="brand-text">Ripple Treasury</span>
+          <span class="brand-sub">Powered by GTreasury</span>
+        </div>
+        <div class="page-tag">01 / 08 · El Reto</div>
+      </div>
+
+      <div class="hero">
+        <div class="eyebrow accent">Por qué los CFOs y tesoreros están estancados</div>
+        <h2 class="title-xl">Sistemas fragmentados. Procesos manuales.<br><span class="accent-text">Sin visibilidad en tiempo real.</span></h2>
+      </div>
+
+      <p class="problem-intro">Los CFOs y equipos de tesorería luchan con sistemas fragmentados, procesos manuales y falta de visibilidad en tiempo real — lo que dificulta gestionar liquidez, pronosticar flujos de efectivo y mitigar riesgos financieros. Muchos aún dependen de hojas de cálculo, generando ineficiencias, errores humanos y oportunidades perdidas.</p>
+
+      <div class="problem-grid">
+        <div class="problem-card stagger-item">
+          <div class="problem-num">01</div>
+          <div class="problem-title">Capital ocioso</div>
+          <div class="problem-desc">Capital de trabajo atrapado en cuentas bancarias sin generar rendimiento mientras los mercados cierran a las 5pm y pasan los fines de semana.</div>
+        </div>
+        <div class="problem-card stagger-item">
+          <div class="problem-num">02</div>
+          <div class="problem-title">Liquidación de varios días</div>
+          <div class="problem-desc">Los pagos transfronterizos tardan de 2 a 5 días, generando exposición FX e incertidumbre en el flujo de efectivo.</div>
+        </div>
+        <div class="problem-card stagger-item">
+          <div class="problem-num">03</div>
+          <div class="problem-title">Proliferación de hojas de cálculo</div>
+          <div class="problem-desc">La conciliación manual entre 12+ bancos introduce errores humanos y ralentiza el cierre del periodo.</div>
+        </div>
+        <div class="problem-card stagger-item">
+          <div class="problem-num">04</div>
+          <div class="problem-title">Activos digitales en silos</div>
+          <div class="problem-desc">Stablecoins y activos tokenizados viven en plataformas paralelas, requiriendo custodia y conciliación separadas.</div>
+        </div>
+      </div>
+
+      <div class="problem-stats">
+        <div>
+          <div class="pstat-val">90%</div>
+          <div class="pstat-label">de los CFOs citan la visibilidad de efectivo como su preocupación #1</div>
+        </div>
+        <div>
+          <div class="pstat-val">$33T</div>
+          <div class="pstat-label">volumen en stablecoins procesado en 2025 (+72% YoY)</div>
+        </div>
+        <div>
+          <div class="pstat-val">72%</div>
+          <div class="pstat-label">de líderes financieros necesitan una solución de activos digitales</div>
+        </div>
+        <div>
+          <div class="pstat-val">30%+</div>
+          <div class="pstat-label">mejora en precisión de pronóstico con GSmart AI</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SLIDE 3 — PLATFORM ========== -->
+  <section>
+    <div class="frame">
+      <div class="frame-header">
+        <div class="lockup">
+          <img class="brand-logo" src="assets/ripple-treasury-logo.svg" alt="Ripple Treasury">
+          <span class="brand-text">Ripple Treasury</span>
+          <span class="brand-sub">Powered by GTreasury</span>
+        </div>
+        <div class="page-tag">02 / 08 · La Plataforma</div>
+      </div>
+
+      <div class="hero">
+        <div class="eyebrow accent">Ripple Treasury, Powered by GTreasury</div>
+        <h2 class="title-xl">La plataforma de tesorería<br><span class="accent-text">más adaptable del mundo.</span></h2>
+      </div>
+
+      <p class="platform-intro">Ripple Treasury se integra de forma fluida con cualquier banco, ERP y proveedor de custodia — entregando visibilidad en tiempo real, pronósticos precisos y flujos de trabajo automatizados que eliminan procesos manuales y reducen el riesgo. Soluciones integrales para liquidez, pronóstico, riesgo, pagos y netting — ahora extendidas con capacidades nativas de activos digitales.</p>
+
+      <div class="pillar-grid">
+        <div class="pillar-card stagger-item">
+          <div class="pillar-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <ellipse cx="12" cy="5" rx="8" ry="3"/>
+              <path d="M4 5v6c0 1.66 3.58 3 8 3s8-1.34 8-3V5"/>
+              <path d="M4 11v6c0 1.66 3.58 3 8 3s8-1.34 8-3v-6"/>
+            </svg>
+          </div>
+          <div class="pillar-title">Integridad de datos</div>
+          <div class="pillar-desc">Se integra de forma fluida con cuentas bancarias, ERPs y sistemas de terceros. Centraliza los datos financieros para que estén siempre actualizados, precisos y accesibles — en posiciones de efectivo, pronósticos y analítica de riesgo.</div>
+        </div>
+
+        <div class="pillar-card stagger-item">
+          <div class="pillar-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="4" width="20" height="14" rx="2"/>
+              <path d="M5 13c2-3 4-3 6 0s4 3 6 0"/>
+              <line x1="8" y1="22" x2="16" y2="22"/>
+              <line x1="12" y1="18" x2="12" y2="22"/>
+            </svg>
+          </div>
+          <div class="pillar-title">Visibilidad y monitoreo</div>
+          <div class="pillar-desc">Precisión y visibilidad totales sobre las operaciones financieras. Insights en tiempo real sobre efectivo, liquidez y riesgos — apoyando la toma de decisiones proactiva.</div>
+        </div>
+
+        <div class="pillar-card stagger-item">
+          <div class="pillar-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="3,17 9,11 13,15 21,7"/>
+              <polyline points="14,7 21,7 21,14"/>
+            </svg>
+          </div>
+          <div class="pillar-title">Reportes y modelado</div>
+          <div class="pillar-desc">Analítica avanzada y modelado de escenarios para analizar riesgos y pronosticar con precisión. Anticipa cambios y toma decisiones más inteligentes basadas en datos.</div>
+        </div>
+
+        <div class="pillar-card stagger-item">
+          <div class="pillar-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="5" y="3" width="14" height="18" rx="2"/>
+              <line x1="9" y1="3" x2="9" y2="6"/>
+              <line x1="15" y1="3" x2="15" y2="6"/>
+              <polyline points="8,13 11,16 16,10"/>
+            </svg>
+          </div>
+          <div class="pillar-title">Ejecución y auditoría</div>
+          <div class="pillar-desc">Tracking automatizado, trazas de auditoría detalladas y datos centralizados. Transparencia total, cumplimiento simplificado y menor tiempo de preparación de auditorías.</div>
+        </div>
+      </div>
+
+      <div class="platform-badge-wrap">
+        <div class="platform-badge">Confiado por 1,000+ clientes en 160 países · $13T procesados en 2025</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SLIDE 4 — ARCHITECTURE ========== -->
+  <section>
+    <div class="frame">
+      <div class="frame-header">
+        <div class="lockup">
+          <img class="brand-logo" src="assets/ripple-treasury-logo.svg" alt="Ripple Treasury">
+          <span class="brand-text">Ripple Treasury</span>
+          <span class="brand-sub">Powered by GTreasury</span>
+        </div>
+        <div class="page-tag">03 / 08 · Arquitectura</div>
+      </div>
+
+      <div class="hero">
+        <div class="eyebrow accent">Arquitectura de la plataforma</div>
+        <h2 class="title-xl">Cinco módulos. Una capa ClearConnect.<br><span class="accent-text">GSmart AI en todo.</span></h2>
+      </div>
+
+      <div class="arch-stage">
+        <svg class="arch-svg" viewBox="0 0 1100 540" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="gsmartGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#FF3D7F" stop-opacity="0.55"/>
+              <stop offset="100%" stop-color="#0085FF" stop-opacity="0.85"/>
+            </linearGradient>
+            <linearGradient id="archCoreGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#14304D"/>
+              <stop offset="100%" stop-color="#0A1628"/>
+            </linearGradient>
+          </defs>
+
+          <!-- Connectors GSmart (animated flow) -->
+          <g fill="none" stroke="url(#gsmartGrad)" stroke-width="1.8" opacity="0.85" stroke-linecap="round">
+            <path class="arch-flow" d="M 550 220 Q 360 190 180 200"/>
+            <path class="arch-flow" d="M 550 220 Q 460 160 340 130"/>
+            <path class="arch-flow" d="M 550 220 L 550 110"/>
+            <path class="arch-flow" d="M 550 220 Q 640 160 760 130"/>
+            <path class="arch-flow" d="M 550 220 Q 740 190 920 200"/>
+          </g>
+
+          <!-- GSmart text labels -->
+          <text x="320" y="178" fill="#0085FF" font-family="DM Mono, monospace" font-size="9" letter-spacing="1.2" opacity="0.85">GSMART AI</text>
+          <text x="700" y="178" fill="#0085FF" font-family="DM Mono, monospace" font-size="9" letter-spacing="1.2" opacity="0.85">GSMART AI</text>
+
+          <!-- 5 module petals (clickable) -->
+          <!-- Liquidity -->
+          <g transform="translate(110,160) rotate(-10 70 45)" class="arch-module" data-module="liquidity">
+            <rect x="0" y="0" width="140" height="90" rx="14" fill="#FFFFFF" stroke="#D4D2CC" stroke-width="1"/>
+            <g transform="translate(58,12)" stroke="#0085FF" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M 12 4 C 6 12, 6 20, 12 24 C 18 20, 18 12, 12 4 Z"/>
+            </g>
+            <text x="70" y="62" text-anchor="middle" fill="#0A1628" font-family="DM Sans, sans-serif" font-size="11" font-weight="700">Liquidity</text>
+            <text x="70" y="78" text-anchor="middle" fill="#0A1628" font-family="DM Sans, sans-serif" font-size="11" font-weight="700">Management</text>
+          </g>
+
+          <!-- Cash Forecasting -->
+          <g transform="translate(270,90)" class="arch-module" data-module="forecasting">
+            <rect x="0" y="0" width="140" height="90" rx="14" fill="#FFFFFF" stroke="#D4D2CC" stroke-width="1"/>
+            <g transform="translate(58,12)" stroke="#0085FF" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="2,22 8,14 14,18 22,6"/>
+              <polyline points="16,6 22,6 22,12"/>
+            </g>
+            <text x="70" y="62" text-anchor="middle" fill="#0A1628" font-family="DM Sans, sans-serif" font-size="11" font-weight="700">Cash</text>
+            <text x="70" y="78" text-anchor="middle" fill="#0A1628" font-family="DM Sans, sans-serif" font-size="11" font-weight="700">Forecasting</text>
+          </g>
+
+          <!-- Payments -->
+          <g transform="translate(480,30)" class="arch-module" data-module="payments">
+            <rect x="0" y="0" width="140" height="90" rx="14" fill="#FFFFFF" stroke="#0085FF" stroke-width="1.6"/>
+            <g transform="translate(58,12)" stroke="#0085FF" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M 2 8 H 22"/>
+              <polyline points="18,4 22,8 18,12"/>
+              <path d="M 22 16 H 2"/>
+              <polyline points="6,12 2,16 6,20"/>
+            </g>
+            <text x="70" y="62" text-anchor="middle" fill="#0A1628" font-family="DM Sans, sans-serif" font-size="12" font-weight="700">Payments</text>
+            <text x="70" y="78" text-anchor="middle" fill="#0050B8" font-family="DM Mono, monospace" font-size="9" letter-spacing="0.06em">FIAT · STABLECOIN</text>
+          </g>
+
+          <!-- Netting -->
+          <g transform="translate(690,90)" class="arch-module" data-module="netting">
+            <rect x="0" y="0" width="140" height="90" rx="14" fill="#FFFFFF" stroke="#D4D2CC" stroke-width="1"/>
+            <g transform="translate(58,12)" stroke="#0085FF" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="6" cy="6" r="3"/>
+              <circle cx="18" cy="6" r="3"/>
+              <circle cx="6" cy="18" r="3"/>
+              <circle cx="18" cy="18" r="3"/>
+              <line x1="6" y1="9" x2="6" y2="15"/>
+              <line x1="18" y1="9" x2="18" y2="15"/>
+              <line x1="9" y1="6" x2="15" y2="18"/>
+              <line x1="15" y1="6" x2="9" y2="18"/>
+            </g>
+            <text x="70" y="62" text-anchor="middle" fill="#0A1628" font-family="DM Sans, sans-serif" font-size="11" font-weight="700">Netting</text>
+            <text x="70" y="78" text-anchor="middle" fill="#0A1628" font-family="DM Sans, sans-serif" font-size="11" font-weight="700">&amp; Intercompañía</text>
+          </g>
+
+          <!-- Risk -->
+          <g transform="translate(850,160) rotate(10 70 45)" class="arch-module" data-module="risk">
+            <rect x="0" y="0" width="140" height="90" rx="14" fill="#FFFFFF" stroke="#D4D2CC" stroke-width="1"/>
+            <g transform="translate(58,12)" stroke="#0085FF" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M 12 2 L 22 6 V 14 C 22 18, 17 22, 12 23 C 7 22, 2 18, 2 14 V 6 Z"/>
+              <polyline points="8,12 11,15 16,9"/>
+            </g>
+            <text x="70" y="62" text-anchor="middle" fill="#0A1628" font-family="DM Sans, sans-serif" font-size="11" font-weight="700">Risk</text>
+            <text x="70" y="78" text-anchor="middle" fill="#0A1628" font-family="DM Sans, sans-serif" font-size="11" font-weight="700">Management</text>
+          </g>
+
+          <!-- Central platform -->
+          <rect x="390" y="220" width="320" height="180" rx="16" fill="url(#archCoreGrad)" stroke="#1F3A56" stroke-width="1"/>
+          <text x="550" y="250" text-anchor="middle" fill="#FFFFFF" font-family="DM Sans, sans-serif" font-size="18" font-weight="700">Ripple Treasury Platform</text>
+
+          <!-- Pills -->
+          <g font-family="DM Sans, sans-serif" font-size="10" font-weight="600" fill="#FFFFFF" text-anchor="middle">
+            <rect x="408" y="270" width="70" height="22" rx="11" fill="rgba(255,255,255,0.08)" stroke="#0085FF" stroke-width="0.8"/>
+            <text x="443" y="285">Security</text>
+            <rect x="486" y="270" width="70" height="22" rx="11" fill="rgba(255,255,255,0.08)" stroke="#0085FF" stroke-width="0.8"/>
+            <text x="521" y="285">Analytics</text>
+            <rect x="564" y="270" width="84" height="22" rx="11" fill="rgba(255,255,255,0.08)" stroke="#0085FF" stroke-width="0.8"/>
+            <text x="606" y="285">Collaboration</text>
+            <rect x="656" y="270" width="70" height="22" rx="11" fill="rgba(255,255,255,0.08)" stroke="#0085FF" stroke-width="0.8"/>
+            <text x="691" y="285">Workflows</text>
+          </g>
+
+          <!-- AI ribbon -->
+          <text x="550" y="316" text-anchor="middle" fill="#0085FF" font-family="DM Mono, monospace" font-size="10" letter-spacing="2.4" font-weight="500">G S M A R T   A I   E M B E D D E D</text>
+
+          <!-- Data Layer -->
+          <rect x="410" y="332" width="280" height="32" rx="13" fill="rgba(0,133,255,0.10)" stroke="#0085FF" stroke-width="1"/>
+          <text x="550" y="352" text-anchor="middle" fill="#FFFFFF" font-family="DM Sans, sans-serif" font-size="12" font-weight="700" letter-spacing="0.06em">DATA LAYER</text>
+
+          <!-- Animated connector to ClearConnect -->
+          <line class="arch-flow-slow" x1="550" y1="400" x2="550" y2="420" stroke="#0085FF" stroke-width="1.8"/>
+
+          <!-- ClearConnect -->
+          <rect x="410" y="420" width="280" height="40" rx="12" fill="#FFFFFF" stroke="#0085FF" stroke-width="2"/>
+          <text x="550" y="446" text-anchor="middle" fill="#0050B8" font-family="DM Sans, sans-serif" font-size="16" font-weight="700" letter-spacing="-0.01em">ClearConnect</text>
+
+          <!-- Animated connector to ecosystem -->
+          <line class="arch-flow-slow" x1="550" y1="460" x2="550" y2="478" stroke="#0085FF" stroke-width="1.8"/>
+
+          <!-- Ecosystem strip -->
+          <rect x="50" y="478" width="1000" height="56" rx="14" fill="#F7F6F2" stroke="#D4D2CC" stroke-width="1"/>
+          <g font-family="DM Sans, sans-serif" font-size="9" fill="#4A4A46" text-anchor="middle">
+            <text x="100" y="514">Bancos</text>
+            <text x="200" y="514">ERPs</text>
+            <text x="300" y="514">AR / AP</text>
+            <text x="400" y="514">Libro Mayor</text>
+            <text x="500" y="514">Data Warehouse</text>
+            <text x="610" y="514">Procesamiento de Pagos</text>
+            <text x="730" y="514">BI &amp; Reportes</text>
+            <text x="840" y="514">Compliance</text>
+            <text x="930" y="514">Trading</text>
+            <text x="1010" y="514">Market Data</text>
+          </g>
+          <g fill="#0085FF">
+            <circle cx="100" cy="496" r="2.6"/>
+            <circle cx="200" cy="496" r="2.6"/>
+            <circle cx="300" cy="496" r="2.6"/>
+            <circle cx="400" cy="496" r="2.6"/>
+            <circle cx="500" cy="496" r="2.6"/>
+            <circle cx="610" cy="496" r="2.6"/>
+            <circle cx="730" cy="496" r="2.6"/>
+            <circle cx="840" cy="496" r="2.6"/>
+            <circle cx="930" cy="496" r="2.6"/>
+            <circle cx="1010" cy="496" r="2.6"/>
+          </g>
+        </svg>
+
+        <div class="arch-side">
+          <div class="arch-side-item">
+            <div class="arch-side-label">Plataforma Core</div>
+            <div class="arch-side-text">Security · Analytics · Collaboration · Workflows · Data Layer</div>
+          </div>
+          <div class="arch-side-item">
+            <div class="arch-side-label">5 Módulos</div>
+            <div class="arch-side-text">Liquidity · Forecasting · Risk · Payments · Netting</div>
+          </div>
+          <div class="arch-side-item">
+            <div class="arch-side-label">GSmart AI</div>
+            <div class="arch-side-text">Embebido en cada módulo — pronóstico, detección de anomalías, razonamiento de escenarios.</div>
+          </div>
+          <div class="arch-side-item">
+            <div class="arch-side-label">ClearConnect</div>
+            <div class="arch-side-text">Conecta cualquier banco, ERP o custodio — en cualquier momento.</div>
+          </div>
+          <div class="arch-hint">Haz clic en un módulo para ver detalle</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SLIDE 5 — MODULES I ========== -->
+  <section>
+    <div class="frame">
+      <div class="frame-header">
+        <div class="lockup">
+          <img class="brand-logo" src="assets/ripple-treasury-logo.svg" alt="Ripple Treasury">
+          <span class="brand-text">Ripple Treasury</span>
+          <span class="brand-sub">Powered by GTreasury</span>
+        </div>
+        <div class="page-tag">04 / 08 · Módulos I</div>
+      </div>
+
+      <div class="hero">
+        <div class="eyebrow accent">Soluciones integrales — parte uno</div>
+        <h2 class="title-xl">Liquidez. Pronóstico. Riesgo.<br><span class="accent-text">Diseñados para cada nivel de complejidad.</span></h2>
+      </div>
+
+      <div class="modules-grid">
+        <div class="module-card stagger-item">
+          <div class="module-head">
+            <div class="module-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2 C 6 10, 6 16, 12 22 C 18 16, 18 10, 12 2 Z"/>
+                <path d="M9 16 C 10 14, 14 14, 15 16"/>
+              </svg>
+            </div>
+            <div class="module-title">Liquidity Management</div>
+          </div>
+          <div class="module-lead">Acceso en tiempo real a posiciones globales de efectivo en todas las cuentas, bancos y regiones.</div>
+          <ul class="module-list">
+            <li>Posiciones de efectivo en tiempo real en todas las cuentas, bancos y regiones</li>
+            <li>Elimina las conjeturas para decisiones de liquidez informadas</li>
+            <li>Centraliza datos de efectivo en una plataforma segura</li>
+            <li>Asegura asignación óptima de fondos para metas operativas y estratégicas</li>
+            <li>Despliegue rápido en tan solo 90 días</li>
+          </ul>
+          <div class="module-foot">DESPLIEGUE 90 DÍAS · TIEMPO REAL</div>
+        </div>
+
+        <div class="module-card stagger-item">
+          <div class="module-head">
+            <div class="module-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="3,18 9,11 13,15 21,5"/>
+                <polyline points="14,5 21,5 21,12"/>
+                <line x1="3" y1="22" x2="21" y2="22"/>
+              </svg>
+            </div>
+            <div class="module-title">Cash Forecasting</div>
+          </div>
+          <div class="module-lead">Pronósticos altamente precisos de corto y mediano plazo combinando datos de ERP, banco y libro mayor.</div>
+          <ul class="module-list">
+            <li>Combina datos de ERP, banco y libro mayor para mayor precisión</li>
+            <li>Mejora la precisión del pronóstico en 30%+ con AI</li>
+            <li>Elimina el análisis manual de varianza</li>
+            <li>Aumenta el flujo de efectivo libre optimizando DSO/DPO</li>
+            <li>Pronósticos siempre activos y narrativas listas para el consejo</li>
+          </ul>
+          <div class="module-foot">AI-POWERED · +30% PRECISIÓN</div>
+        </div>
+
+        <div class="module-card stagger-item">
+          <div class="module-head">
+            <div class="module-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2 L 22 6 V 12 C 22 17, 17 22, 12 22 C 7 22, 2 17, 2 12 V 6 Z"/>
+                <polyline points="8,12 11,15 16,9"/>
+              </svg>
+            </div>
+            <div class="module-title">Risk Management</div>
+          </div>
+          <div class="module-lead">Visibilidad total sobre exposiciones de FX, tasas de interés y commodities.</div>
+          <ul class="module-list">
+            <li>Visibilidad sobre todas las exposiciones: FX, tasas, commodities</li>
+            <li>Centraliza datos de riesgo, elimina hojas de cálculo</li>
+            <li>Rastrea instrumentos desde emisión hasta vencimiento</li>
+            <li>Herramientas de análisis de escenarios para volatilidad de mercado</li>
+            <li>Tracking automatizado y trazas de auditoría</li>
+          </ul>
+          <div class="module-foot">COBERTURA TOTAL DE EXPOSICIÓN</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SLIDE 6 — MODULES II ========== -->
+  <section>
+    <div class="frame">
+      <div class="frame-header">
+        <div class="lockup">
+          <img class="brand-logo" src="assets/ripple-treasury-logo.svg" alt="Ripple Treasury">
+          <span class="brand-text">Ripple Treasury</span>
+          <span class="brand-sub">Powered by GTreasury</span>
+        </div>
+        <div class="page-tag">05 / 08 · Módulos II</div>
+      </div>
+
+      <div class="hero">
+        <div class="eyebrow accent">Soluciones integrales — parte dos</div>
+        <h2 class="title-xl">Pagos. Netting.<br><span class="accent-text">Más activos digitales nativos.</span></h2>
+      </div>
+
+      <div class="modules-grid">
+        <div class="module-card stagger-item">
+          <div class="module-head">
+            <div class="module-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 9 H 19"/>
+                <polyline points="16,6 19,9 16,12"/>
+                <path d="M21 15 H 5"/>
+                <polyline points="8,12 5,15 8,18"/>
+              </svg>
+            </div>
+            <div class="module-title">Payments</div>
+          </div>
+          <div class="module-lead">Pagos automatizados y centralizados — fiat, stablecoin y activos tokenizados.</div>
+          <ul class="module-list">
+            <li>Automatiza y centraliza procesos de pago</li>
+            <li>Reduce errores manuales y riesgos de fraude</li>
+            <li>Se integra con bancos y ERPs globalmente</li>
+            <li>Mejora la gestión del flujo de efectivo</li>
+            <li>Liquidación con stablecoin en 3–5 segundos vía RLUSD</li>
+          </ul>
+          <div class="module-foot">FIAT + STABLECOIN · 3–5 SEG</div>
+        </div>
+
+        <div class="module-card stagger-item">
+          <div class="module-head">
+            <div class="module-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="6" cy="6" r="3"/>
+                <circle cx="18" cy="6" r="3"/>
+                <circle cx="6" cy="18" r="3"/>
+                <circle cx="18" cy="18" r="3"/>
+                <line x1="6" y1="9" x2="6" y2="15"/>
+                <line x1="18" y1="9" x2="18" y2="15"/>
+                <line x1="9" y1="6" x2="15" y2="18"/>
+                <line x1="15" y1="6" x2="9" y2="18"/>
+              </svg>
+            </div>
+            <div class="module-title">Netting &amp; Intercompañía</div>
+          </div>
+          <div class="module-lead">Optimiza flujos de efectivo intercompañía y exposición FX.</div>
+          <ul class="module-list">
+            <li>Optimiza flujos de efectivo intercompañía</li>
+            <li>Automatiza netting entre subsidiarias</li>
+            <li>Reduce transacciones y riesgo FX</li>
+            <li>Simplifica la complejidad transfronteriza</li>
+            <li>Implementación en 90 días</li>
+          </ul>
+          <div class="module-foot">IMPLEMENTACIÓN EN 90 DÍAS</div>
+        </div>
+
+        <div class="module-card new stagger-item">
+          <div class="module-badge-new">NUEVO · ABR 2026</div>
+          <div class="module-head">
+            <div class="module-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M12 7 V 17"/>
+                <path d="M9 9 H 14 a 2 2 0 0 1 0 4 H 10 a 2 2 0 0 0 0 4 H 15"/>
+              </svg>
+            </div>
+            <div class="module-title">Digital Asset Accounts</div>
+          </div>
+          <div class="module-lead">El primer TMS con capacidades nativas de activos digitales.</div>
+          <ul class="module-list">
+            <li>Mantén XRP y RLUSD junto a fiat en un solo dashboard</li>
+            <li>Valoración fiat en tiempo real con precisión de 15 decimales</li>
+            <li>Registro automatizado de transacciones y trazas de auditoría</li>
+            <li>Conecta con múltiples custodios vía ClearConnect</li>
+            <li>Base para liquidación transfronteriza y rendimiento 24/7</li>
+          </ul>
+          <div class="module-foot">FIRST-TO-MARKET · INTEGRACIÓN NATIVA</div>
+        </div>
+      </div>
+
+      <div class="coming-band">
+        <span class="coming-band-label">PRÓXIMAMENTE</span>
+        <span>Liquidación intercompañía transfronteriza &nbsp;·&nbsp; Rendimiento 24/7 sobre efectivo ocioso vía repo overnight con RLUSD</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SLIDE 6.5 — VOICES / USE CASES ========== -->
+  <section>
+    <div class="frame">
+      <div class="frame-header">
+        <div class="lockup">
+          <img class="brand-logo" src="assets/ripple-treasury-logo.svg" alt="Ripple Treasury">
+          <span class="brand-text">Ripple Treasury</span>
+          <span class="brand-sub">Powered by GTreasury</span>
+        </div>
+        <div class="page-tag">06 / 08 · Casos de Uso</div>
+      </div>
+
+      <div class="hero">
+        <div class="eyebrow accent">Voces post-implementación</div>
+        <h2 class="title-xl">Lo que cambia<br><span class="accent-text">cuando la plataforma está en producción.</span></h2>
+      </div>
+
+      <div class="voices-grid">
+        <!-- Treasurer -->
+        <div class="voice-card stagger-item">
+          <div class="voice-role-tag">Group Treasurer</div>
+          <span class="voice-quote-mark">&ldquo;</span>
+          <div class="voice-quote">Antes pasábamos los lunes en la mañana reconstruyendo posiciones de efectivo del viernes en hojas de cálculo. Ahora lo veo todo a las 7am — bancos, ERPs, custodios — en una sola pantalla.</div>
+          <div class="voice-attrib">
+            <div>
+              <div class="voice-name">Manufacturera Fortune 500</div>
+              <div class="voice-role">Industria pesada · LATAM</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CFO -->
+        <div class="voice-card stagger-item">
+          <div class="voice-role-tag">CFO</div>
+          <span class="voice-quote-mark">&ldquo;</span>
+          <div class="voice-quote">El verdadero cambio no es el TMS — es poder mantener parte del balance en stablecoins regulados y conciliar todo en el mismo libro mayor. Eso era impensable hace 18 meses.</div>
+          <div class="voice-attrib">
+            <div>
+              <div class="voice-name">Fintech serie C</div>
+              <div class="voice-role">Servicios financieros · $120M ARR</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Controller -->
+        <div class="voice-card stagger-item">
+          <div class="voice-role-tag">Group Controller</div>
+          <span class="voice-quote-mark">&ldquo;</span>
+          <div class="voice-quote">Recortamos el cierre mensual de 11 a 4 días. La trazabilidad de auditoría que antes tomaba 3 semanas armarla ahora se exporta en una tarde.</div>
+          <div class="voice-attrib">
+            <div>
+              <div class="voice-name">Holding industrial multinacional</div>
+              <div class="voice-role">Manufactura diversificada · 6 países</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="voices-summary">
+        <div class="voices-summary-stat">
+          <div class="voices-summary-val">11 → 4 días</div>
+          <div class="voices-summary-label">Reducción promedio del cierre mensual</div>
+        </div>
+        <div class="voices-summary-stat">
+          <div class="voices-summary-val">+30%</div>
+          <div class="voices-summary-label">Mejora en precisión de pronóstico</div>
+        </div>
+        <div class="voices-summary-stat">
+          <div class="voices-summary-val">3 sem → 1 tarde</div>
+          <div class="voices-summary-label">Tiempo para preparar trazas de auditoría</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SLIDE 7 — GSMART AI ========== -->
+  <section>
+    <div class="frame">
+      <div class="frame-header">
+        <div class="lockup">
+          <img class="brand-logo" src="assets/ripple-treasury-logo.svg" alt="Ripple Treasury">
+          <span class="brand-text">Ripple Treasury</span>
+          <span class="brand-sub">Powered by GTreasury</span>
+        </div>
+        <div class="page-tag">07 / 08 · Inteligencia</div>
+      </div>
+
+      <div class="hero">
+        <div class="eyebrow accent">GSmart AI</div>
+        <h2 class="title-xl">Amplificando la claridad para actuar —<br><span class="accent-text">AI diseñada para tesorería.</span></h2>
+      </div>
+
+      <div class="ai-layout">
+        <div class="ai-left">
+          <div class="ai-desc">GSmart AI mejora Ripple Treasury con automatización inteligente e insights predictivos. Construido pensando en finanzas, se integra en pronóstico, riesgo, liquidez y conectividad — entregando insights accionables en tiempo real.</div>
+
+          <div class="ai-badge">
+            <div class="ai-badge-title">GSmart</div>
+            <div class="ai-badge-sub">Amplifying the Clarity to Act</div>
+          </div>
+
+          <div class="ai-advantage">
+            <div class="ai-advantage-head">La ventaja GSmart</div>
+            <ul class="ai-advantage-list">
+              <li>AI nivel enterprise con gobernanza controlada por el usuario</li>
+              <li>Opera dentro de tus límites de datos — sin datos de terceros</li>
+              <li>Alineado con ISO/IEC 42001 + EU AI Act</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="ai-caps">
+          <div class="ai-cap-card stagger-item">
+            <div class="ai-cap-title">GSmart Forecast Insights</div>
+            <div class="ai-cap-desc">Agentic AI detecta, explica y recomienda acciones sobre anomalías y varianzas en pronósticos — mejores decisiones, más rápido.</div>
+          </div>
+          <div class="ai-cap-card stagger-item">
+            <div class="ai-cap-title">GSmart Ledger</div>
+            <div class="ai-cap-desc">Modelado estadístico que infiere flujos de efectivo futuros a partir de tendencias AP/AR, mejorando la precisión del pronóstico en 30%+.</div>
+          </div>
+          <div class="ai-cap-card stagger-item">
+            <div class="ai-cap-title">GSmart Liquidity Scenarios</div>
+            <div class="ai-cap-desc">Lógica difusa que descubre patrones ocultos y entrega insights más profundos para planeación estratégica de liquidez.</div>
+          </div>
+          <div class="ai-cap-card stagger-item">
+            <div class="ai-cap-title">GSmart Risk Management</div>
+            <div class="ai-cap-desc">Simula escenarios de riesgo de mercado usando razonamiento estadístico — respuesta más rápida y precisa a la volatilidad.</div>
+          </div>
+          <div class="ai-cap-card stagger-item">
+            <div class="ai-cap-title">GSmart Connectivity</div>
+            <div class="ai-cap-desc">Agentic AI acelera integraciones de ERP y banco, mejorando el flujo de datos y reduciendo tiempos de implementación.</div>
+          </div>
+          <div class="ai-cap-card stagger-item" style="background:var(--ink); border-color:var(--ink);">
+            <div class="ai-cap-title" style="color:var(--accent);">Próximamente en el roadmap</div>
+            <div class="ai-cap-desc" style="color:rgba(255,255,255,0.7);">Treasury copilot para consultas en lenguaje natural, barridos automáticos de efectivo y alertas proactivas de riesgo sobre reservas en stablecoin.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SLIDE 8 — NEXT STEPS ========== -->
+  <section>
+    <div class="frame">
+      <div class="frame-header">
+        <div class="lockup">
+          <img class="brand-logo" src="assets/ripple-treasury-logo.svg" alt="Ripple Treasury">
+          <span class="brand-text">Ripple Treasury</span>
+          <span class="brand-sub">Powered by GTreasury</span>
+        </div>
+        <div class="page-tag">08 / 08 · Próximos Pasos</div>
+      </div>
+
+      <div class="hero">
+        <div class="eyebrow accent">Cómo iniciamos juntos</div>
+        <h2 class="title-xl">Tres pasos para llevar Ripple Treasury<br><span class="accent-text">a producción en 90 días.</span></h2>
+      </div>
+
+      <div class="discovery-grid">
+        <div>
+          <div class="roadmap-head">El camino de adopción</div>
+
+          <div class="roadmap-week stagger-item">
+            <div class="week-label">SEMANA 1</div>
+            <div>
+              <div class="week-title">Sesión de alineación inicial</div>
+              <div class="week-desc">30 minutos para entender tu complejidad de tesorería, mapear los módulos relevantes y acordar cómo se ve el éxito — sin compromiso.</div>
+            </div>
+          </div>
+
+          <div class="roadmap-week focal stagger-item">
+            <div class="week-label">SEMANA 2-4</div>
+            <div>
+              <div class="week-title">Demo personalizado con tus datos</div>
+              <div class="week-desc">Walkthrough en vivo usando una muestra de tus cuentas bancarias, ERPs y pronósticos. Configuramos 1–2 módulos de extremo a extremo.</div>
+            </div>
+          </div>
+
+          <div class="roadmap-week stagger-item">
+            <div class="week-label">SEMANA 5-12</div>
+            <div>
+              <div class="week-title">Despliegue en producción</div>
+              <div class="week-desc">Cash Visibility, Forecasting y Netting en vivo en 90 días. Expansión modular conforme crecen tus necesidades.</div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="questions-head">
+            <div class="questions-title">Por qué Ripple Treasury</div>
+            <div class="questions-count">04 · diferenciadores</div>
+          </div>
+
+          <div class="question-item stagger-item">
+            <div class="question-num">01</div>
+            <div class="question-text">
+              Modular — eliges los módulos que necesitas
+              <span class="meta">Sin pagar por capacidades que no usas</span>
+            </div>
+          </div>
+          <div class="question-item stagger-item">
+            <div class="question-num">02</div>
+            <div class="question-text">
+              Despliegue en 90 días
+              <span class="meta">Time-to-value rápido vs. 12–18 meses de TMS legacy</span>
+            </div>
+          </div>
+          <div class="question-item stagger-item">
+            <div class="question-num">03</div>
+            <div class="question-text">
+              GSmart AI embebido
+              <span class="meta">Pronóstico, anomalías y razonamiento de escenarios</span>
+            </div>
+          </div>
+          <div class="question-item stagger-item">
+            <div class="question-num">04</div>
+            <div class="question-text">
+              Activos digitales nativos
+              <span class="meta">First-to-market — XRP, RLUSD, fondos tokenizados</span>
+            </div>
+          </div>
+
+          <div class="closing-note">
+            Ripple Treasury es modular — pagas por lo que usas, sin compromiso de largo plazo hasta que el valor sea claro.
+          </div>
+          <div class="contact-line">Ripple Treasury · enterprise@ripple.com · treasury.ripple.com</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== Module tooltip modal ========== -->
+  <div class="module-tooltip" id="archTooltip" hidden role="dialog" aria-modal="true" aria-labelledby="archTooltipTitle">
+    <div class="module-tooltip-content">
+      <button class="module-tooltip-close" aria-label="Cerrar">&times;</button>
+      <div class="module-tooltip-eyebrow" id="archTooltipEyebrow">Módulo</div>
+      <div class="module-tooltip-title" id="archTooltipTitle"></div>
+      <div class="module-tooltip-lead" id="archTooltipLead"></div>
+      <ul class="module-tooltip-list" id="archTooltipList"></ul>
+    </div>
+  </div>
+
+  <!-- ========== Overlays ========== -->
+  <div class="deck-indicator"><span id="deck-current">01</span> / <span id="deck-total">09</span></div>
+  <div class="deck-hint"><kbd>&larr;</kbd> <kbd>&rarr;</kbd> navegar · <kbd>F</kbd> pantalla completa · <kbd>Esc</kbd> cerrar</div>
+
+  <script>
+  (function(){
+    const sections = Array.from(document.querySelectorAll('section'));
+    const totalEl  = document.getElementById('deck-total');
+    const currEl   = document.getElementById('deck-current');
+    let current = 0;
+
+    if (totalEl) totalEl.textContent = String(sections.length).padStart(2,'0');
+
+    function goTo(n){
+      n = Math.max(0, Math.min(sections.length - 1, n));
+      current = n;
+      sections[n].scrollIntoView({ behavior: 'smooth' });
+      if (currEl) currEl.textContent = String(n + 1).padStart(2,'0');
+    }
+
+    document.addEventListener('keydown', function(e){
+      // If tooltip open, only Escape works
+      const tip = document.getElementById('archTooltip');
+      if (tip && !tip.hidden) {
+        if (e.key === 'Escape') tip.hidden = true;
+        return;
+      }
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') goTo(current + 1);
+      if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   goTo(current - 1);
+      if (e.key === 'f' || e.key === 'F') {
+        if (!document.fullscreenElement) document.documentElement.requestFullscreen();
+        else document.exitFullscreen();
+      }
+    });
+
+    const slideObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting) {
+          current = sections.indexOf(entry.target);
+          if (currEl) currEl.textContent = String(current + 1).padStart(2,'0');
+        }
+      });
+    }, { threshold: 0.5 });
+    sections.forEach(function(s){ slideObs.observe(s); });
+
+    // Stagger animations
+    const staggerEls = document.querySelectorAll('.stagger-item');
+    staggerEls.forEach(function(el){
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(16px)';
+      el.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+    });
+    const staggerObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting) {
+          const siblings = Array.from(entry.target.parentElement.querySelectorAll('.stagger-item'));
+          const idx = siblings.indexOf(entry.target);
+          setTimeout(function(){
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }, idx * 80);
+          staggerObs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    staggerEls.forEach(function(el){ staggerObs.observe(el); });
+
+    // ===== Module tooltip data =====
+    const moduleData = {
+      liquidity: {
+        title: 'Liquidity Management',
+        lead: 'Acceso en tiempo real a posiciones globales de efectivo en todas las cuentas, bancos y regiones.',
+        bullets: [
+          'Posiciones de efectivo en tiempo real en todas las cuentas, bancos y regiones',
+          'Elimina las conjeturas para decisiones de liquidez informadas',
+          'Centraliza datos de efectivo en una plataforma segura',
+          'Asegura asignación óptima de fondos para metas operativas y estratégicas',
+          'Despliegue rápido en tan solo 90 días'
+        ]
+      },
+      forecasting: {
+        title: 'Cash Forecasting',
+        lead: 'Pronósticos altamente precisos de corto y mediano plazo combinando datos de ERP, banco y libro mayor.',
+        bullets: [
+          'Combina datos de ERP, banco y libro mayor para mayor precisión',
+          'Mejora la precisión del pronóstico en 30%+ con AI',
+          'Elimina el análisis manual de varianza',
+          'Aumenta el flujo de efectivo libre optimizando DSO/DPO',
+          'Pronósticos siempre activos y narrativas listas para el consejo'
+        ]
+      },
+      payments: {
+        title: 'Payments',
+        lead: 'Pagos automatizados y centralizados — fiat, stablecoin y activos tokenizados.',
+        bullets: [
+          'Automatiza y centraliza procesos de pago',
+          'Reduce errores manuales y riesgos de fraude',
+          'Se integra con bancos y ERPs globalmente',
+          'Mejora la gestión del flujo de efectivo',
+          'Liquidación con stablecoin en 3–5 segundos vía RLUSD'
+        ]
+      },
+      netting: {
+        title: 'Netting & Intercompañía',
+        lead: 'Optimiza flujos de efectivo intercompañía y exposición FX.',
+        bullets: [
+          'Optimiza flujos de efectivo intercompañía',
+          'Automatiza netting entre subsidiarias',
+          'Reduce transacciones y riesgo FX',
+          'Simplifica la complejidad transfronteriza',
+          'Implementación en 90 días'
+        ]
+      },
+      risk: {
+        title: 'Risk Management',
+        lead: 'Visibilidad total sobre exposiciones de FX, tasas de interés y commodities.',
+        bullets: [
+          'Visibilidad sobre todas las exposiciones: FX, tasas, commodities',
+          'Centraliza datos de riesgo, elimina hojas de cálculo',
+          'Rastrea instrumentos desde emisión hasta vencimiento',
+          'Herramientas de análisis de escenarios para volatilidad de mercado',
+          'Tracking automatizado y trazas de auditoría'
+        ]
+      }
+    };
+
+    const tip   = document.getElementById('archTooltip');
+    const tipTitle = document.getElementById('archTooltipTitle');
+    const tipLead  = document.getElementById('archTooltipLead');
+    const tipList  = document.getElementById('archTooltipList');
+
+    document.querySelectorAll('.arch-module').forEach(function(g){
+      g.addEventListener('click', function(){
+        const key = g.getAttribute('data-module');
+        const data = moduleData[key];
+        if (!data || !tip) return;
+        tipTitle.textContent = data.title;
+        tipLead.textContent  = data.lead;
+        tipList.innerHTML = '';
+        data.bullets.forEach(function(b){
+          const li = document.createElement('li');
+          li.textContent = b;
+          tipList.appendChild(li);
+        });
+        tip.hidden = false;
+      });
+    });
+
+    if (tip) {
+      tip.addEventListener('click', function(e){
+        if (e.target === tip || e.target.classList.contains('module-tooltip-close')) {
+          tip.hidden = true;
+        }
+      });
+    }
+  })();
+  </script>
+</body>
+</html>

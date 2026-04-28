@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Ripple Treasury">
+  <g fill="#0085FF">
+    <circle cx="10" cy="10.5" r="5"/>
+    <circle cx="20.5" cy="8.5" r="4"/>
+    <circle cx="16" cy="21" r="6"/>
+  </g>
+</svg>
