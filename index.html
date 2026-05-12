@@ -579,6 +579,12 @@
       flex: 1;
     }
 
+    .modules-grid.hero {
+      grid-template-columns: minmax(0, 720px);
+      justify-content: center;
+      align-content: center;
+    }
+
     .module-card {
       background: var(--cream);
       border: 1px solid var(--gray-300);
@@ -1231,7 +1237,7 @@
         <span class="dot"></span>
         <span>La plataforma de tesorería más adaptable del mundo</span>
       </div>
-      <h1 class="display-cover">La claridad para actuar —<br><span class="accent-text-italic">en cada activo</span></h1>
+      <h1 class="display-cover">La claridad para actuar<br><span class="accent-text-italic">en cada activo.</span></h1>
       <p class="cover-sub">El primer Treasury Management System con capacidades nativas de activos digitales. 40 años de experiencia en tesorería empresarial, ahora extendidos a stablecoins, fondos tokenizados y liquidación blockchain en tiempo real — sin romper tus flujos de trabajo existentes.</p>
       <div class="cover-meta">
         <div class="cover-meta-item">
@@ -1261,7 +1267,7 @@
           <span class="brand-text">Ripple Treasury</span>
           <span class="brand-sub">Powered by GTreasury</span>
         </div>
-        <div class="page-tag">01 / 08 · El Reto</div>
+        <div class="page-tag">01 / 09 · El Reto</div>
       </div>
 
       <div class="hero">
@@ -1324,7 +1330,7 @@
           <span class="brand-text">Ripple Treasury</span>
           <span class="brand-sub">Powered by GTreasury</span>
         </div>
-        <div class="page-tag">02 / 08 · La Plataforma</div>
+        <div class="page-tag">02 / 09 · La Plataforma</div>
       </div>
 
       <div class="hero">
@@ -1400,12 +1406,12 @@
           <span class="brand-text">Ripple Treasury</span>
           <span class="brand-sub">Powered by GTreasury</span>
         </div>
-        <div class="page-tag">03 / 08 · Arquitectura</div>
+        <div class="page-tag">03 / 09 · Arquitectura</div>
       </div>
 
       <div class="hero">
         <div class="eyebrow accent">Arquitectura de la plataforma</div>
-        <h2 class="title-xl">Cinco módulos. Una capa ClearConnect.<br><span class="accent-text">GSmart AI en todo.</span></h2>
+        <h2 class="title-xl">Seis módulos. Una capa ClearConnect.<br><span class="accent-text">GSmart AI en todo.</span></h2>
       </div>
 
       <div class="arch-stage">
@@ -1421,22 +1427,23 @@
             </linearGradient>
           </defs>
 
-          <!-- Connectors GSmart (animated flow) -->
+          <!-- Connectors GSmart (animated flow) — 6 paths -->
           <g fill="none" stroke="url(#gsmartGrad)" stroke-width="1.8" opacity="0.85" stroke-linecap="round">
-            <path class="arch-flow" d="M 550 220 Q 360 190 180 200"/>
-            <path class="arch-flow" d="M 550 220 Q 460 160 340 130"/>
-            <path class="arch-flow" d="M 550 220 L 550 110"/>
-            <path class="arch-flow" d="M 550 220 Q 640 160 760 130"/>
-            <path class="arch-flow" d="M 550 220 Q 740 190 920 200"/>
+            <path class="arch-flow" d="M 550 220 Q 340 215 110 215"/>
+            <path class="arch-flow" d="M 550 220 Q 420 175 282 140"/>
+            <path class="arch-flow" d="M 550 220 Q 502 145 454 75"/>
+            <path class="arch-flow" d="M 550 220 Q 598 145 626 75"/>
+            <path class="arch-flow" d="M 550 220 Q 678 175 798 140"/>
+            <path class="arch-flow" d="M 550 220 Q 760 215 970 215"/>
           </g>
 
           <!-- GSmart text labels -->
-          <text x="320" y="178" fill="#0085FF" font-family="DM Mono, monospace" font-size="9" letter-spacing="1.2" opacity="0.85">GSMART AI</text>
-          <text x="700" y="178" fill="#0085FF" font-family="DM Mono, monospace" font-size="9" letter-spacing="1.2" opacity="0.85">GSMART AI</text>
+          <text x="280" y="178" fill="#0085FF" font-family="DM Mono, monospace" font-size="9" letter-spacing="1.2" opacity="0.85">GSMART AI</text>
+          <text x="740" y="178" fill="#0085FF" font-family="DM Mono, monospace" font-size="9" letter-spacing="1.2" opacity="0.85">GSMART AI</text>
 
-          <!-- 5 module petals (clickable) -->
+          <!-- 6 module petals (clickable) -->
           <!-- Liquidity -->
-          <g transform="translate(110,160) rotate(-10 70 45)" class="arch-module" data-module="liquidity">
+          <g transform="translate(40,170) rotate(-14 70 45)" class="arch-module" data-module="liquidity">
             <rect x="0" y="0" width="140" height="90" rx="14" fill="#FFFFFF" stroke="#D4D2CC" stroke-width="1"/>
             <g transform="translate(58,12)" stroke="#0085FF" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round">
               <path d="M 12 4 C 6 12, 6 20, 12 24 C 18 20, 18 12, 12 4 Z"/>
@@ -1446,7 +1453,7 @@
           </g>
 
           <!-- Cash Forecasting -->
-          <g transform="translate(270,90)" class="arch-module" data-module="forecasting">
+          <g transform="translate(212,95) rotate(-6 70 45)" class="arch-module" data-module="forecasting">
             <rect x="0" y="0" width="140" height="90" rx="14" fill="#FFFFFF" stroke="#D4D2CC" stroke-width="1"/>
             <g transform="translate(58,12)" stroke="#0085FF" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round">
               <polyline points="2,22 8,14 14,18 22,6"/>
@@ -1457,7 +1464,7 @@
           </g>
 
           <!-- Payments -->
-          <g transform="translate(480,30)" class="arch-module" data-module="payments">
+          <g transform="translate(384,30) rotate(-1 70 45)" class="arch-module" data-module="payments">
             <rect x="0" y="0" width="140" height="90" rx="14" fill="#FFFFFF" stroke="#0085FF" stroke-width="1.6"/>
             <g transform="translate(58,12)" stroke="#0085FF" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round">
               <path d="M 2 8 H 22"/>
@@ -1469,8 +1476,21 @@
             <text x="70" y="78" text-anchor="middle" fill="#0050B8" font-family="DM Mono, monospace" font-size="9" letter-spacing="0.06em">FIAT · STABLECOIN</text>
           </g>
 
+          <!-- Reconciliation -->
+          <g transform="translate(556,30) rotate(1 70 45)" class="arch-module" data-module="reconciliation">
+            <rect x="0" y="0" width="140" height="90" rx="14" fill="#FFFFFF" stroke="#D4D2CC" stroke-width="1"/>
+            <g transform="translate(58,12)" stroke="#0085FF" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M 2 9 H 12"/>
+              <polyline points="9,6 12,9 9,12"/>
+              <path d="M 22 17 H 12"/>
+              <polyline points="15,14 12,17 15,20"/>
+            </g>
+            <text x="70" y="62" text-anchor="middle" fill="#0A1628" font-family="DM Sans, sans-serif" font-size="11" font-weight="700">Reconciliation</text>
+            <text x="70" y="78" text-anchor="middle" fill="#0050B8" font-family="DM Mono, monospace" font-size="9" letter-spacing="0.06em">98% MATCHING</text>
+          </g>
+
           <!-- Netting -->
-          <g transform="translate(690,90)" class="arch-module" data-module="netting">
+          <g transform="translate(728,95) rotate(6 70 45)" class="arch-module" data-module="netting">
             <rect x="0" y="0" width="140" height="90" rx="14" fill="#FFFFFF" stroke="#D4D2CC" stroke-width="1"/>
             <g transform="translate(58,12)" stroke="#0085FF" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round">
               <circle cx="6" cy="6" r="3"/>
@@ -1487,7 +1507,7 @@
           </g>
 
           <!-- Risk -->
-          <g transform="translate(850,160) rotate(10 70 45)" class="arch-module" data-module="risk">
+          <g transform="translate(900,170) rotate(14 70 45)" class="arch-module" data-module="risk">
             <rect x="0" y="0" width="140" height="90" rx="14" fill="#FFFFFF" stroke="#D4D2CC" stroke-width="1"/>
             <g transform="translate(58,12)" stroke="#0085FF" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round">
               <path d="M 12 2 L 22 6 V 14 C 22 18, 17 22, 12 23 C 7 22, 2 18, 2 14 V 6 Z"/>
@@ -1503,14 +1523,14 @@
 
           <!-- Pills -->
           <g font-family="DM Sans, sans-serif" font-size="10" font-weight="600" fill="#FFFFFF" text-anchor="middle">
-            <rect x="408" y="270" width="70" height="22" rx="11" fill="rgba(255,255,255,0.08)" stroke="#0085FF" stroke-width="0.8"/>
-            <text x="443" y="285">Security</text>
-            <rect x="486" y="270" width="70" height="22" rx="11" fill="rgba(255,255,255,0.08)" stroke="#0085FF" stroke-width="0.8"/>
-            <text x="521" y="285">Analytics</text>
-            <rect x="564" y="270" width="84" height="22" rx="11" fill="rgba(255,255,255,0.08)" stroke="#0085FF" stroke-width="0.8"/>
-            <text x="606" y="285">Collaboration</text>
-            <rect x="656" y="270" width="70" height="22" rx="11" fill="rgba(255,255,255,0.08)" stroke="#0085FF" stroke-width="0.8"/>
-            <text x="691" y="285">Workflows</text>
+            <rect x="395" y="270" width="68" height="22" rx="11" fill="rgba(255,255,255,0.08)" stroke="#0085FF" stroke-width="0.8"/>
+            <text x="429" y="285">Security</text>
+            <rect x="468" y="270" width="68" height="22" rx="11" fill="rgba(255,255,255,0.08)" stroke="#0085FF" stroke-width="0.8"/>
+            <text x="502" y="285">Analytics</text>
+            <rect x="541" y="270" width="84" height="22" rx="11" fill="rgba(255,255,255,0.08)" stroke="#0085FF" stroke-width="0.8"/>
+            <text x="583" y="285">Collaboration</text>
+            <rect x="630" y="270" width="80" height="22" rx="11" fill="rgba(255,255,255,0.08)" stroke="#0085FF" stroke-width="0.8"/>
+            <text x="670" y="285">Workflows</text>
           </g>
 
           <!-- AI ribbon -->
@@ -1590,7 +1610,7 @@
           <span class="brand-text">Ripple Treasury</span>
           <span class="brand-sub">Powered by GTreasury</span>
         </div>
-        <div class="page-tag">04 / 08 · Módulos I</div>
+        <div class="page-tag">04 / 09 · Módulos I</div>
       </div>
 
       <div class="hero">
@@ -1675,12 +1695,12 @@
           <span class="brand-text">Ripple Treasury</span>
           <span class="brand-sub">Powered by GTreasury</span>
         </div>
-        <div class="page-tag">05 / 08 · Módulos II</div>
+        <div class="page-tag">05 / 09 · Módulos II</div>
       </div>
 
       <div class="hero">
-        <div class="eyebrow accent">Soluciones integrales — parte dos</div>
-        <h2 class="title-xl">Pagos. Netting.<br><span class="accent-text">Más activos digitales nativos.</span></h2>
+        <div class="eyebrow accent">Soluciones integrales — operación &amp; control</div>
+        <h2 class="title-xl">Pagos. Conciliación. Netting.<br><span class="accent-text">Operación end-to-end con audit trail completo.</span></h2>
       </div>
 
       <div class="modules-grid">
@@ -1711,6 +1731,29 @@
           <div class="module-head">
             <div class="module-icon">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 9 H 13"/>
+                <polyline points="10,6 13,9 10,12"/>
+                <path d="M21 15 H 11"/>
+                <polyline points="14,12 11,15 14,18"/>
+              </svg>
+            </div>
+            <div class="module-title">Reconciliation</div>
+          </div>
+          <div class="module-lead">Conciliación automática entre datos bancarios, ERP y libro mayor con matching inteligente.</div>
+          <ul class="module-list">
+            <li>Matching inteligente con 98% de precisión entre banco y ERP</li>
+            <li>Conecta datos de cualquier fuente con integración seamless</li>
+            <li>Visibilidad completa de posiciones y estatus de transacciones</li>
+            <li>Acelera el cierre mensual con procesos automatizados</li>
+            <li>Audit trails completos para compliance y governance</li>
+          </ul>
+          <div class="module-foot">98% MATCHING · CIERRE MENSUAL AUTOMATIZADO</div>
+        </div>
+
+        <div class="module-card stagger-item">
+          <div class="module-head">
+            <div class="module-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="6" cy="6" r="3"/>
                 <circle cx="18" cy="6" r="3"/>
                 <circle cx="6" cy="18" r="3"/>
@@ -1733,7 +1776,28 @@
           </ul>
           <div class="module-foot">IMPLEMENTACIÓN EN 90 DÍAS</div>
         </div>
+      </div>
+    </div>
+  </section>
 
+  <!-- ========== SLIDE 7 — MODULES III · DIGITAL ASSETS HERO ========== -->
+  <section>
+    <div class="frame">
+      <div class="frame-header">
+        <div class="lockup">
+          <img class="brand-logo" src="assets/ripple-treasury-logo.svg" alt="Ripple Treasury">
+          <span class="brand-text">Ripple Treasury</span>
+          <span class="brand-sub">Powered by GTreasury</span>
+        </div>
+        <div class="page-tag">06 / 09 · Módulos III</div>
+      </div>
+
+      <div class="hero">
+        <div class="eyebrow accent">Soluciones integrales — activos digitales nativos</div>
+        <h2 class="title-xl">Activos digitales nativos.<br><span class="accent-text">El primer TMS con tesorería on-chain.</span></h2>
+      </div>
+
+      <div class="modules-grid hero">
         <div class="module-card new stagger-item">
           <div class="module-badge-new">NUEVO · ABR 2026</div>
           <div class="module-head">
@@ -1774,7 +1838,7 @@
           <span class="brand-text">Ripple Treasury</span>
           <span class="brand-sub">Powered by GTreasury</span>
         </div>
-        <div class="page-tag">06 / 08 · Casos de Uso</div>
+        <div class="page-tag">07 / 09 · Casos de Uso</div>
       </div>
 
       <div class="hero">
@@ -1852,7 +1916,7 @@
           <span class="brand-text">Ripple Treasury</span>
           <span class="brand-sub">Powered by GTreasury</span>
         </div>
-        <div class="page-tag">07 / 08 · Inteligencia</div>
+        <div class="page-tag">08 / 09 · Inteligencia</div>
       </div>
 
       <div class="hero">
@@ -1918,7 +1982,7 @@
           <span class="brand-text">Ripple Treasury</span>
           <span class="brand-sub">Powered by GTreasury</span>
         </div>
-        <div class="page-tag">08 / 08 · Descubrimiento</div>
+        <div class="page-tag">09 / 09 · Descubrimiento</div>
       </div>
 
       <div class="hero">
@@ -2146,6 +2210,17 @@
           'Rastrea instrumentos desde emisión hasta vencimiento',
           'Herramientas de análisis de escenarios para volatilidad de mercado',
           'Tracking automatizado y trazas de auditoría'
+        ]
+      },
+      reconciliation: {
+        title: 'Reconciliation',
+        lead: 'Conciliación automática entre datos bancarios, ERP y libro mayor con matching inteligente.',
+        bullets: [
+          'Matching inteligente con 98% de precisión entre banco y ERP',
+          'Conecta datos de cualquier fuente con integración seamless',
+          'Visibilidad completa de posiciones y estatus de transacciones',
+          'Acelera el cierre mensual con procesos automatizados',
+          'Audit trails completos para compliance y governance'
         ]
       }
     };
